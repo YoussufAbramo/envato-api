@@ -42,11 +42,6 @@ function urlCheck(currentURL) {
   }
 }
 
-// JUST FOR TESTING
-function test() {
-  console.log("TEST!!!!");
-}
-
 // get Authentication Code
 const authorizationCode = urlCheck(currentURL);
 
@@ -60,13 +55,11 @@ function reqAccessToken() {
   console.log('reqAccessToken Function is executed.');
   document.getElementById("verification-pending").innerHTML = verification_content[1];
   // Start the Request
-  const clientSecret = "yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii";
-  const authorizationCode = urlCheck(window.location.href);
   const requestBody = new URLSearchParams({
     grant_type: "authorization_code",
-    code: authorizationCode,
+    code: envatoAPI_data.authorizationCode,
     client_id: envatoAPI_data.clientId,
-    client_secret: clientSecret,
+    client_secret: envatoAPI_data.clientSecret,
   });
 
   fetch(tokenUrl, {
@@ -91,18 +84,23 @@ function reqAccessToken() {
     });
 }
 
-// Example usage:
-executeFunctionBasedOnBoolean(1); // Calls functionA
-executeFunctionBasedOnBoolean(0); // Calls functionB
-executeFunctionBasedOnBoolean(42); // Logs an error message
+
+// JUST FOR TESTING
+function test() {
+  console.log("TEST!!!!");
+}
 
 
 
 
 
-
-
-
+/////////////////////////////////////////// 
+/////////////////////////////////////////// 
+/////////////////////////////////////////// 
+/////////// THE CODE ENDS HERE ////////////
+/////////////////////////////////////////// 
+/////////////////////////////////////////// 
+/////////////////////////////////////////// 
 
 
 
@@ -176,7 +174,3 @@ if (match) {
   console.log("Authorization Code not found in the URL.");
 }
 
-
-
-
-POST https://api.envato.com/token?grant_type=authorization_code&code=${authorizationCode}&client_id=abramoxyz-4hwhyoxs&client_secret=yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii
