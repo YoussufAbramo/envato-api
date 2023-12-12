@@ -1,12 +1,12 @@
 // import { envatoAPI_data, envatoRequest_URLs } from './setup.js';
+
 const envatoAPI_data = {
   redirect_uri: 'https://abramo.xyz/envato',
   tokenUrl: 'https://api.envato.com/token',
   clientId: 'abramoxyz-4hwhyoxs',
-  clientSecret: 'yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii'
+  clientSecret: 'yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii',
+  authorizationCode: ''
 }
-
-// https://api.envato.com/authorization?response_type=code&client_id=abramoxyz-4hwhyoxs&redirect_uri=https://abramo.xyz/envato
 
 // HTML Content to show depending on the user current step
 const verification_content = [
@@ -29,7 +29,7 @@ function currentURL() {
     authUser(); // Display Authentication Button
   } else if (urlCheck.has('code') === true) {
     // Get the Authentication Code
-    var authorizationCode = urlCheck.get('code');
+    authorizationCode = urlCheck.get('code');
     console.log("Authorization Code:", authorizationCode);
     envatoAPI_data.authorizationCode = authorizationCode;
     // Start Function To Request Access Token
@@ -38,6 +38,7 @@ function currentURL() {
     document.getElementById("verification").innerHTML = verification_content[2];
   }
 }
+currentURL();
 
 // function to display authentication button
 function authUser() {
@@ -76,7 +77,9 @@ function reqAccessToken() {
       // Use the access token for subsequent API requests
       console.log("Access Token:", data.access_token);
       // Store Access Token in Cookies
-      document.cookie = document.cookie + "; accesstoken=" + data.access_token;
+      document.cookie = "; accesstoken=" + data.access_token;
+      const get_token = data.access_token;
+      return get_token;
     })
     .catch(error => {
       console.error("There was a problem with the fetch operation:", error);

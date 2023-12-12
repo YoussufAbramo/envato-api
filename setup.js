@@ -5,7 +5,7 @@ const envatoAPI_data = {
   tokenUrl: 'https://api.envato.com/token',
   clientId: 'abramoxyz-4hwhyoxs',
   clientSecret: 'yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii',
-  authorizationCode: authorizationCode,
+  authorizationCode: ''
 }
 
 const envatoRequest_URLs = {
@@ -20,3 +20,4 @@ const envatoRequest_URLs = {
 }
 
 export { envatoAPI_data, envatoRequest_URLs };
+
