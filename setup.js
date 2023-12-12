@@ -8,4 +8,15 @@ const envatoAPI_data = {
   authorizationCode: authorizationCode,
 }
 
-export { envatoAPI_data };
+const envatoRequest_URLs = {
+  // List purchases
+  listPurchases: 'https://api.envato.com/v3/market/buyer/list-purchases',
+  // Download purchased items by either the item_id or the purchase_code. Each invocation of this endpoint will count against the items daily download limit.
+  download: 'https://api.envato.com/v3/market/buyer/download',
+  // Lists all purchases that the authenticated user has made of the app creator's listed items
+  purchases: 'https://api.envato.com/v3/market/buyer/purchases',
+  // Lists all of the user's bookmarks
+  bookmarks: 'https://api.envato.com/v3/market/user/bookmarks',
+}
+
+export { envatoAPI_data, envatoRequest_URLs };

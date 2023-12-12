@@ -27,4 +27,4 @@
 2. Now you will only see an object inside it with my data, simply change these data to make your API plugin setup correctly.
 
 > [!CAUTION]
-> This is a pure programming I did neither use `framework` nor `liberary`, so if you are going to mix this code with `WordPress` or any other CMD or `framework`, it would be on your responsibility.
+> This is a pure programming I did neither use `framework` nor `liberary`, so if you are going to mix this code with `WordPress` or any other `CMS` or `framework`, it would be on your responsibility.
