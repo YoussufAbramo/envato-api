@@ -8,7 +8,7 @@ const envatoAPI_data = {
   authorizationCode: ''
 }
 
-const envatoRequest_URLs = {
+const API_URL = {
   // List purchases
   listPurchases: 'https://api.envato.com/v3/market/buyer/list-purchases',
   // Download purchased items by either the item_id or the purchase_code. Each invocation of this endpoint will count against the items daily download limit.
@@ -19,5 +19,5 @@ const envatoRequest_URLs = {
   bookmarks: 'https://api.envato.com/v3/market/user/bookmarks',
 }
 
-export { envatoAPI_data, envatoRequest_URLs };
+export { envatoAPI_data, API_URL };
 

@@ -1,4 +1,4 @@
-// import { envatoAPI_data, envatoRequest_URLs } from './setup.js';
+// import { envatoAPI_data, API_URL } from './setup.js';
 
 const envatoAPI_data = {
   redirect_uri: 'https://abramo.xyz/envato',
@@ -6,6 +6,17 @@ const envatoAPI_data = {
   clientId: 'abramoxyz-4hwhyoxs',
   clientSecret: 'yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii',
   authorizationCode: ''
+}
+
+const API_URL = {
+  // List purchases
+  listPurchases: 'https://api.envato.com/v3/market/buyer/list-purchases',
+  // Download purchased items by either the item_id or the purchase_code. Each invocation of this endpoint will count against the items daily download limit.
+  download: 'https://api.envato.com/v3/market/buyer/download',
+  // Lists all purchases that the authenticated user has made of the app creator's listed items
+  purchases: 'https://api.envato.com/v3/market/buyer/purchases',
+  // Lists all of the user's bookmarks
+  bookmarks: 'https://api.envato.com/v3/market/user/bookmarks',
 }
 
 // HTML Content to show depending on the user current step
@@ -74,15 +85,49 @@ function reqAccessToken() {
       return response.json();
     })
     .then(data => {
-      // Use the access token for subsequent API requests
-      console.log("Access Token:", data.access_token);
       // Store Access Token in Cookies
       document.cookie = "; accesstoken=" + data.access_token;
-      const get_token = data.access_token;
-      return get_token;
     })
     .catch(error => {
       console.error("There was a problem with the fetch operation:", error);
     });
 }
 
+// function to get cookie name
+function getCookie(cookieName) {
+  const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split('=');
+    if (name === cookieName) {
+      return decodeURIComponent(value);
+    }
+  }
+  return null; // Cookie not found
+}
+getCookie('accesstoken');
+
+// get all purchased items
+const token = getCookie('accesstoken');
+var apiUrl = API_URL.listPurchases;
+
+// Set up the headers with the Authorization token
+const headers = new Headers({
+  "Authorization": `Bearer ${token}`
+});
+
+// Make the API request using fetch (GET method)
+fetch(apiUrl, { method: "GET", headers })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Handle the data from the API response
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle errors
+    console.error("Error fetching data:", error);
+  });

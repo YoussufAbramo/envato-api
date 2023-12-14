@@ -7,7 +7,7 @@
 + Website : [Visit Me](https://abramo.xyz) Now
 ### Plugin
 + Name : Access Your Envato Account With API
-+ Version : 1.0.0
++ Version : 1.1.0
 + Description : This API is to show the list of purchases products in your account and give the access to the user to download any of them.
 + Original API Documentation : [Click Here To Visit](https://build.envato.com/api/)
 
