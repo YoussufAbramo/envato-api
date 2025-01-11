@@ -3,8 +3,8 @@
 const envatoAPI_data = {
   redirect_uri: 'https://abramo.xyz/envato',
   tokenUrl: 'https://api.envato.com/token',
-  clientId: 'abramoxyz-4hwhyoxs',
-  clientSecret: 'yEkML5SeWpkQ2w0aZYOXWJLLtPJGKcii',
+  clientId: 'abramoxyz-4hypaobs',
+  clientSecret: 'yEkML5SeWi',
   authorizationCode: ''
 }
 
